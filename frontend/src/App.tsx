@@ -32,7 +32,7 @@ function App() {
 
   function handleChange(label: string, value: any) {
     setValues((prev) => ({ ...prev, [label]: value }));
-    // clear error for this field as user edits
+
     setFieldErrors((prev) => {
       const copy = { ...prev };
       delete copy[label];

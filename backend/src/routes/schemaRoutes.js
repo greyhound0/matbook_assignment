@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// The exact Employee Onboarding form schema JSON as per assignment:
 const formSchema = {
   title: "Employee Onboarding Form",
   description: "Please fill out the details to onboard the new employee.",

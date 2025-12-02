@@ -7,7 +7,7 @@ export function useSubmissions(
 ) {
   return useQuery({
     queryKey: ["submissions", page, limit, sortOrder],
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     queryFn: async (): Promise<any> => {
       const params = new URLSearchParams({
         page: String(page),

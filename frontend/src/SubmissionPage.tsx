@@ -16,7 +16,7 @@ function SubmissionsPage() {
   if (isLoading) return <p>Loading submissions…</p>;
   if (isError) return <p>Error: {(error as Error).message}</p>;
 
-  const body: any = data; // backend: { paginatedData, page, limit, totalCount, totalPages }
+  const body: any = data; // { paginatedData, page, limit, totalCount, totalPages }
   const rows = body.paginatedData ?? [];
 
   return (
@@ -28,7 +28,15 @@ function SubmissionsPage() {
           <p>Total submissions: {body.totalCount}</p>
         </div>
 
-        <div style={{ margin: "1rem 0" }}>
+        <div
+          style={{
+            margin: "1rem 0",
+            display: "flex",
+            gap: "0.75rem",
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
           <label>
             Items per page:{" "}
             <select
@@ -44,14 +52,27 @@ function SubmissionsPage() {
             </select>
           </label>
 
-          <button
-            style={{ marginLeft: "1rem" }}
-            onClick={() =>
-              setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))
-            }
-          >
-            Sort by date: {sortOrder}
-          </button>
+          <div className="sort-toggle">
+            <span className="sort-label">Sort by date:</span>
+            <button
+              type="button"
+              className={`sort-chip ${
+                sortOrder === "desc" ? "sort-chip-active" : ""
+              }`}
+              onClick={() => setSortOrder("desc")}
+            >
+              Newest
+            </button>
+            <button
+              type="button"
+              className={`sort-chip ${
+                sortOrder === "asc" ? "sort-chip-active" : ""
+              }`}
+              onClick={() => setSortOrder("asc")}
+            >
+              Oldest
+            </button>
+          </div>
         </div>
 
         {rows.length === 0 ? (

@@ -83,7 +83,6 @@ router.get("/", (req, res) => {
   if (isNaN(limit) || limit < 1) limit = 10;
   if (!["asc", "desc"].includes(sortOrder)) sortOrder = "desc";
 
-  // Sort submissions
   const sortedSubmissions = submissions.sort((a, b) => {
     if (sortBy === "createdAt") {
       if (sortOrder === "asc")
@@ -93,7 +92,6 @@ router.get("/", (req, res) => {
     return 0;
   });
 
-  // Pagination
   const startIndex = (page - 1) * limit;
   const paginatedData = sortedSubmissions.slice(startIndex, startIndex + limit);
 
