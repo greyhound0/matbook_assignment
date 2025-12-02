@@ -17,7 +17,7 @@ export function useSubmissions(
       });
 
       const res = await fetch(
-        `http://localhost:5000/api/submissions?${params.toString()}`
+        `https://onboarding-form1.onrender.com/api/submissions?${params.toString()}`
       );
       if (!res.ok) throw new Error("Failed to load submissions");
       return res.json();
